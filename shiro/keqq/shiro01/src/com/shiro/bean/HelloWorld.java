@@ -60,6 +60,19 @@ public class HelloWorld {
 			
 		}
 		
+		if (currentUser.hasRole("admin")) {
+			log.info("拥有指定的角色");
+		}else{
+			log.info("不拥有指定的角色");
+		}
+		
+		if (currentUser.isPermitted("winnebago:drive:eagle5")) {
+			log.info("拥有指定的权限");
+		}else{
+			log.info("不拥有指定的权限");
+		}
+		
+		
 	}
 	
 	

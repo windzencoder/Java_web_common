@@ -114,6 +114,7 @@
 			<value>
 				/logon.jsp = anon
 				/logon = anon
+				/logout = logout
 				/** = authc
 			</value>
 		</property>

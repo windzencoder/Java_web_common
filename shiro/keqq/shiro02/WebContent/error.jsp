@@ -10,6 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>认证失败 </h3>
+	认证失败
 </body>
 </html>

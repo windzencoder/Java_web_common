@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	success.jsp
+	认证成功
+	<br/>
+	<a href="logout">logout</a>
 </body>
 </html>

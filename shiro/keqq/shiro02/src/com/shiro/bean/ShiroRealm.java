@@ -10,6 +10,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthenticatingRealm;
 
 public class ShiroRealm extends AuthenticatingRealm {
@@ -23,6 +24,7 @@ public class ShiroRealm extends AuthenticatingRealm {
 		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
 		// 2.获取用户名即可
 		String username = upToken.getUsername();
+
 		// 3.查询数据库是否存在指定用户名和密码的用户
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -36,11 +38,14 @@ public class ShiroRealm extends AuthenticatingRealm {
 				Object principal = username;
 				Object credentials = rs.getString(3);//password
 				String realmName = this.getName();
+				
+				SimpleHash sh = new SimpleHash("MD5", credentials, null, 1024);
+				
 				/*
 				 * 将合法的用户名密码封装在SimpleAuthenticationInfo中
 				 * shiro会自动判断用户输入的密码，是否与封装的密码一致
 				 */
-				info = new SimpleAuthenticationInfo(principal, credentials, realmName);
+				info = new SimpleAuthenticationInfo(principal, sh, realmName);
 			}else{
 				// 5.如果没有查询到，抛出一个异常
 				throw new AuthenticationException();//抛出异常

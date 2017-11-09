@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 
-public class SubmitActionServlet extends HttpServlet
-{
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException
-  {
-    String userCaptchaResponse = request.getParameter("japtcha");
-    boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
-    if (captchaPassed)
-      response.getWriter().write("captcha passed");
-    else {
-      response.getWriter().write("captcha failed");
-    }
-    response.getWriter().write("<br/><a href='index.jsp'>Try again</a>");
-  }
+public class SubmitActionServlet extends HttpServlet {
+
+	private static final long serialVersionUID = -441893585716434992L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userCaptchaResponse = request.getParameter("japtcha");
+		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
+		if (captchaPassed)
+			response.getWriter().write("captcha passed");
+		else {
+			response.getWriter().write("captcha failed");
+		}
+		response.getWriter().write("<br/><a href='index.jsp'>Try again</a>");
+	}
 }

@@ -11,7 +11,7 @@
 
 	<img alt="random" src="randomcode.jpg" onclick="changeR(this)" style="cursor: pointer;">
 	<form action="check.jsp">
-		<input type="text" name="r"> <input type="submit" value="s">
+		<input type="text" name="r"> <input type="submit" value="submit">
 	</form>
 	
 	
@@ -20,7 +20,7 @@
 			// 用于点击时产生不同的验证码
 			node.src = "randomcode.jpg?time="+new Date().getTime() ;	
 		}
-</script>
+	</script>
 	
 </body>
 </html>

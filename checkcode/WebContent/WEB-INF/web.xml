@@ -55,18 +55,19 @@
 	<servlet>
 		<servlet-name>kaptcha</servlet-name>
 		<servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
-		<init-param>
+ 		<init-param>
 			<description>图片边框，合法值：yes, no</description>
 			<param-name>kaptcha.border</param-name>
 			<param-value>no</param-value>
 		</init-param>
+		<!--
 		<init-param>
 			<description>文本实现类</description>
 			<param-name>kaptcha.textproducer.impl</param-name>
 			<param-value>
 				com.imooc.kcaptcha.ChineseText
 			</param-value>
-		</init-param>
+		</init-param> -->
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>kaptcha</servlet-name>

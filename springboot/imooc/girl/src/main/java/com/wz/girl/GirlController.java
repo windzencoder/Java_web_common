@@ -11,6 +11,17 @@ public class GirlController {
     @Autowired
     private GirlReponsitory girlReponsitory;
 
+    @Autowired
+    private GirlService girlService;
+
+    /**
+     * 测试事务
+     */
+    @RequestMapping(value = "/girls/two")
+    public void insertTwo(){
+        girlService.insertTwo();
+    }
+
     /**
      * 查询列表
      * @return

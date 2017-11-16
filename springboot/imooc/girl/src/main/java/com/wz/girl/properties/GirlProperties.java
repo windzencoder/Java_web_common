@@ -1,4 +1,4 @@
-package com.wz.girl;
+package com.wz.girl.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

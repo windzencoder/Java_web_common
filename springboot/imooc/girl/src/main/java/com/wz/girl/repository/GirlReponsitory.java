@@ -1,5 +1,6 @@
-package com.wz.girl;
+package com.wz.girl.repository;
 
+import com.wz.girl.domain.Girl;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

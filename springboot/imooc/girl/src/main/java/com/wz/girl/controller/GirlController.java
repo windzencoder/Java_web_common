@@ -1,8 +1,16 @@
-package com.wz.girl;
+package com.wz.girl.controller;
 
+
+import com.wz.girl.domain.Girl;
+import com.wz.girl.domain.Result;
+import com.wz.girl.repository.GirlReponsitory;
+import com.wz.girl.service.GirlService;
+import com.wz.girl.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,17 +41,16 @@ public class GirlController {
 
     /**
      * 添加Girl
-     * @param cupSize
-     * @param age
      * @return
      */
     @PostMapping(value = "/girls")
-    public Girl girlAdd(@RequestParam("cupSize") String cupSize,
-                          @RequestParam("age") Integer age){
-        Girl girl = new Girl();
-        girl.setCupSize(cupSize);
-        girl.setAge(age);
-        return girlReponsitory.save(girl);
+    public Result<Girl> girlAdd(@Valid Girl girl, BindingResult bindingResult){
+
+        if (bindingResult.hasErrors()){
+            return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
+        }
+        girlReponsitory.save(girl);
+        return ResultUtil.success(girlReponsitory.save(girl));
     }
 
     /**
@@ -87,4 +94,10 @@ public class GirlController {
     public List<Girl> findByAge(@PathVariable("age") Integer age){
         return girlReponsitory.findByAge(age);
     }
+
+    @GetMapping(value = "/girls/getAge/{id}")
+    public void getAge(@PathVariable("id") Integer id) throws  Exception{
+        girlService.getAge(id);
+    }
+
 }

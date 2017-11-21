@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ResourceMapper {
+	
     long countByExample(ResourceExample example);
 
     int deleteByExample(ResourceExample example);
